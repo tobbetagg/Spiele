@@ -1,69 +1,13 @@
 <html>
+    <head>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    </head>
     <body onkeydown="keyHandler(event)">
-        <canvas id="duk" width="1000" height="500" onmousemove="mouseHandler(event)" style="cursor:none;"></canvas>
-        <script>
-            var c = document.getElementById("duk");
-            var ctx = c.getContext("2d")
-            var xMouse = 0, yMouse = 0;
-           
-            var key;
-            var moveupdown;
-            var moveside;
-            
-            
-            
-            function paintMan(x, y) {
-                //måla huvud
-                ctx.beginPath();
-                ctx.arc(x, y, 20, 0, 2*Math.PI);
-                ctx.fill()
-                
-            
-            }
-            
-            function mouseHandler(event) {
-                xMouse=event.clientX;
-                yMouse=event.clientY;
-            }
-            
-            function repaint(){
-           ctx.clearRect(0, 0, 1000, 1000);
-                //Måla musgubbe
-                paintMan(xMouse,yMouse);
-                block(moveside,moveupdown);
-               
-            }
-               
-            function block(x,y){
-            ctx.beginPath();
-            ctx.fillRect(x+10, y+10, 200, 200);
-            ctx.fill();
-            
-            
-            
-            
-            
-            }
-            
-            function keyhandler(event){
-                key=event.keyCode;
-                if (key==87){
-                moveupdown = moveupdown - 20
-                }
-                else if (key==83){
-                moveupdown = moveupdown + 20
-                }
-                else if (key==65){
-                moveside = moveside - 20
-                }
-                else if (key==68){
-                moveside = moveside + 20
-                }
-            }
-            
-            //kallar på repaint 50 ggr i sekunden
-            
-            window.setInterval(repaint,20);  
-        </script>
+        <canvas id="duk" width="1000" height="500" onmousemove="mouseHandler(event)" style="cursor:none;border:10px solid #000000;"></canvas>
+           <script src="howler.min.js"></script>
+        <script src="script.js"></script>
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <p id="leftPlScore">Vänster spelare: 0</p>
+        <p id="rightPlScore">Höger spelare: 0</p>
     </body>
 </html>
